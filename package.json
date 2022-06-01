@@ -1,0 +1,19 @@
+{
+  "name": "deco2017",
+  "version": "1.0.0",
+  "description": "web app for studying",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RenhaoBa/deco2017.git"
+  },
+  "author": "Renhao Ba",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RenhaoBa/deco2017/issues"
+  },
+  "homepage": "https://github.com/RenhaoBa/deco2017#readme"
+}
