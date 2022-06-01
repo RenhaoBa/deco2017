@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Date</title>
+        <link rel="stylesheet" type="text/css" href="calendar/font/iconfont.css"/>
+        <link rel="stylesheet" type="text/css" href="calendar/calendar-mobile.css"/>
+
+    </head>
+    <body>
+
+        <div class="header">
+            <span class="header-menu" id="MONTH">MONTH</span>
+            <span class="header-menu" id="DAY">DAY</span>
+            <span class="header-menu" id="TIMER">TIMER</span>
+        </div>
+
+        <div id="month-content" style="display:block">
+        </div>
+
+
+        <div id="mask" style="display:none"></div>
+
+        <div id="create-task-mobile" style="display:none">
+
+            <input type="text" class="taskname" style="width: 100%;" placeholder = 'task name' id="taskname"></input>
+
+            <div>
+                <span class="task-span" id="dueoption"><img class="task-img" src="./image/due.jpg"/></span>
+                <span class="task-span" id="prioption"><img class="task-img" src="./image/pri.jpg"/></span>
+                <span class="task-span" id="rtioption"><img class="task-img" src="./image/rti.jpg"/></span>
+            </div>
+
+            <div id="due-option" style="display: block;">
+                <p>due time</p>
+                <input type="time" class="taskname" style="width: 100%;" placeholder = 'task name' value="00:00" id="duetime"></input>
+                <p>estumated time of finish</p>
+                <input type="time" class="taskname" style="width: 100%;" placeholder = 'task name' value="23:59" id="estumatedtime"></input>
+            </div>
+
+            <div id="pri-option" style="display: none;">
+                <select name="" id="priority" multiple style="width: 100%;">
+                    <option value="0" selected="true">important and urgent</option>
+                    <option value="1">important but not urgent</option>
+                    <option value="2">not important but urgent</option>
+                    <option value="3">not important and not urgent</option>
+                </select>
+            </div>
+
+            <div id="rti-option" style="display: none;">
+                <select name="" id="routine" multiple style="width: 100%;">
+                    <option value="0" selected="true">no routine</option>
+                    <option value="1">once a day</option>
+                    <option value="2">once a week</option>
+                    <option value="3">once a month</option>
+                </select>
+            </div>
+
+
+
+            <p></p>
+            <input type="button" class="addtask" value="Save" id="tasksave"></input>
+
+
+            
+        </div>
+
+        <div id="create-task" style="display:none">
+            <div class="menu">MONTH/+Add Task</div>
+            <p>task name</p>
+            <input type="text" class="taskname" id="taskname"></input>
+            <p>due time</p>
+
+            <input type="time" class="taskname" id="duetime"></input>
+
+            <p>estumated time of finish</p>
+            <input type="time" class="taskname" id="estumatedtime"></input>
+
+            <p>priority</p>
+
+            <select class="taskname" id="priority">
+                <option value="0">important and urgent</option>
+                <option value="1">important but not urgent</option>
+                <option value="2">not important but urgent</option>
+                <option value="3">not important and not urgent</option>
+            </select>
+            
+
+            <p>Routine</p>
+
+            <input type="radio" name="routine" value="0" checked="true" class="radioroutine">no routine</input>
+            <input type="radio" name="routine" value="1" class="radioroutine">once a day</input>
+            <input type="radio" name="routine" value="2" class="radioroutine">once a week</input>
+            <input type="radio" name="routine" value="3" class="radioroutine">once a month</input>
+
+            <p></p>
+            <input type="button" class="addtask" value="Save" id="tasksave"></input>
+        </div>
+
+        <div id="day-content" style="display:none">
+            <div class="task-all">
+                <div class="task-all-menu">task - all</div>
+                <div class="task-content" id="task-all-info"></div>
+            </div>
+
+            <div class="task-all">
+                <div class="task-all-menu">task - 4 quadrant</div>
+                <div class="task-content">
+                     <div class="priorityitem">
+                     <div class="prioritytitle" style="background-color: #FFA07A;font-size: 2rem;">important and urgent</div>
+                     <div class="priorityinfo" id="priority0"></div>
+                     </div>
+
+
+                     <div class="priorityitem">
+                        <div class="prioritytitle" style="background-color: #FF00FF;font-size: 2rem;">important but not urgent</div>
+                        <div class="priorityinfo" id="priority1"></div>
+                    </div>
+
+
+                    <div class="priorityitem">
+                        <div class="prioritytitle" style="background-color: #708090;font-size: 2rem;">not important but urgent</div>
+                        <div class="priorityinfo" id="priority2"></div>
+                    </div>
+
+                    <div class="priorityitem">
+                        <div class="prioritytitle" style="background-color: #D2B48C;font-size: 2rem;">not important and not urgent</div>
+                        <div class="priorityinfo" id="priority3"></div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="timer-content" style="display:none">
+            <div class="task-all">
+                <div class="task-all-menu">Timer</div>
+                <div class="task-content timer-content" id="task-all-info">
+
+                    <svg width="500" height="400"></svg>
+
+                    <div id="showTime">00:00:00</div>
+                    <button id="startBn" class="timer-button">Start</button>
+                    <button id="restBn" class="timer-button">Reset</button>
+                </div>
+
+
+            </div>
+
+
+            <div class="task-all">
+                <div class="task-all-menu">music player</div>
+                <div class="task-content" id="task-all-info">
+
+                    <audio id="music" src="./mp3/13061.mp3" controls autoplay="true"></audio>
+
+                    <p></p>
+
+                    <select name="" id="musics" multiple style="width: 100%;">
+                        <option value="" selected>13061.mp3</option>
+                        <option value="">13148.mp3</option>
+                        </select>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+        
+        
+        <script src="js/d3.v5.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/Calendar-mobile.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/Timer.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript">
+            function Month() {
+                document.getElementById("month-content").innerHTML = "";
+                document.getElementById("MONTH").style.color = "#FFFF54";
+                document.getElementById("DAY").style.color = "#FFFFFF";
+                document.getElementById("TIMER").style.color = "#FFFFFF";
+                document.getElementById("month-content").style.display = "block";
+                document.getElementById("create-task").style.display = "none";
+                document.getElementById("day-content").style.display = "none";
+                document.getElementById("timer-content").style.display = "none";
+                new Calendar().initHeadersAndAdds("month-content");
+            }
+
+            function Day() {
+                document.getElementById("month-content").innerHTML = "";
+                document.getElementById("DAY").style.color = "#FFFF54";
+                document.getElementById("MONTH").style.color = "#FFFFFF";
+                document.getElementById("TIMER").style.color = "#FFFFFF";
+                document.getElementById("month-content").style.display = "none";
+                document.getElementById("create-task").style.display = "none";
+                document.getElementById("day-content").style.display = "block";
+                document.getElementById("timer-content").style.display = "none";
+                new Calendar().initDay();
+            }
+
+            function Timer() {
+
+                document.getElementById("month-content").innerHTML = "";
+                document.getElementById("DAY").style.color = "#FFFFFF";
+                document.getElementById("MONTH").style.color = "#FFFFFF";
+                document.getElementById("TIMER").style.color = "#FFFF54";
+                document.getElementById("month-content").style.display = "none";
+                document.getElementById("create-task").style.display = "none";
+                document.getElementById("day-content").style.display = "none";
+                document.getElementById("timer-content").style.display = "block";
+                var timerobj = new TimerClass();
+                
+                timerobj.initTimer();
+                timerobj.initPlayer();
+                
+
+
+            }
+
+            document.getElementById("MONTH").onclick = function() {
+                Month();
+            };
+
+            document.getElementById("DAY").onclick = function() {
+                Day();
+            };
+            document.getElementById("TIMER").onclick = function() {
+                Timer();
+            };
+
+
+            // create task
+            document.getElementById("dueoption").onclick = function() {
+                document.getElementById("due-option").style.display = "block";
+                document.getElementById("pri-option").style.display = "none";
+                document.getElementById("rti-option").style.display = "none";
+            }
+            document.getElementById("prioption").onclick = function() {
+                document.getElementById("due-option").style.display = "none";
+                document.getElementById("pri-option").style.display = "block";
+                document.getElementById("rti-option").style.display = "none";
+            }
+
+            document.getElementById("rtioption").onclick = function() {
+                document.getElementById("due-option").style.display = "none";
+                document.getElementById("pri-option").style.display = "none";
+                document.getElementById("rti-option").style.display = "block";
+            }
+
+
+
+
+            
+
+            Month();
+        </script>
+    </body>
+</html>
